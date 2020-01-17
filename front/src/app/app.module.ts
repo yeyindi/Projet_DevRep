@@ -6,11 +6,20 @@ import { Router, RouterModule,Routes } from "@angular/router";
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { MainComponent } from './main/main.component';
 
 const appRoutes:Routes = [
   {
-  path:"/login",
+  path:'login',
   component:LoginComponent
+},
+  {
+  path:'inscription',
+  component:InscriptionComponent
+  },
+  {
+    path:''
+    component:MainComponent
   }
 ];
 
@@ -18,13 +27,14 @@ const appRoutes:Routes = [
   declarations: [
     AppComponent,
     InscriptionComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
-    //RouterModule.forRoot(appRoutes)
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

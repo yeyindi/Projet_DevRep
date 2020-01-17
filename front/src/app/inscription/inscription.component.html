@@ -1,10 +1,17 @@
-<form class="col-lg-5 offset-lg-4" (submit)="sendForm()">
+<div style="text-align:center">
+  <h3>
+    Welcome to {{ title }}!
+  </h3>
+  <img width="200" height="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2 style="text-align:center">Inscription</h2>
+<form class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
 <div class="form-row" >
   <div class="form-group col-md-2">
     <label for="inputTitle">Title</label>
     <select id="inputTitle" class="form-control">
       <option selected>Prof</option>
-      <option >Dr</option>
+      <option >Doctor</option>
       <option >Mr</option>
       <option >Mrs</option>
       <option >Ms</option>
@@ -16,7 +23,11 @@
   </div>
   <div class="form-group col-md-4">
     <label for="inputLastName">Last name</label>
-    <input type="text" class="form-control" id="inputLastName">
+    <input type="text" class="form-control" id="inputLastName" name="lName"
+    [(ngModel)]="model.lName"
+    #name="ngModel"
+    [ngClass]="{'is-invalid':f.submit && name.invalid}" required
+    >
   </div>
 </div>
 <div class="form-group">
@@ -54,11 +65,7 @@
 <div class="form-group">
   <label for="type">Type</label>
   <select id="type" class="form-control col-lg-9">
-    <option selected>Prof</option>
-    <li *ngFor="let type of types"><option >{{ type }}</option></li>
-    <option >Mr</option>
-    <option >Mrs</option>
-    <option >Ms</option>
+    <option *ngFor="let type of types">{{ type }}</option>
   </select>
 </div>
   <button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3" type="submit">Submit </button>
