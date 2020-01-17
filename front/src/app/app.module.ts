@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { Router, RouterModule,Routes } from "@angular/router";
-import { TestComponent } from './test/test.component';
+import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes:Routes = [
   {
-  path:"/test",
-  component: TestComponent
+  path:"/login",
+  component:LoginComponent
   }
 ];
 
@@ -18,7 +18,7 @@ const appRoutes:Routes = [
   declarations: [
     AppComponent,
     InscriptionComponent,
-    TestComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
