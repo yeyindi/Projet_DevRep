@@ -19,15 +19,17 @@
   </div>
   <div class="form-group col-md-3">
     <label for="inputFirstName">First name</label>
-    <input type="text" class="form-control" id="inputFirstName">
+    <input type="text" class="form-control" id="inputFirstName" name="fName"
+    [(ngModel)]="model.fName"
+    #fName="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && fName.invalid}"required/>
   </div>
   <div class="form-group col-md-4">
-    <label for="inputLastName">Last name</label>
-    <input type="text" class="form-control" id="inputLastName" name="lName"
+    <label for="lName">Last name</label>
+    <input type="text" class="form-control" id="lName" name="lName"
     [(ngModel)]="model.lName"
-    #name="ngModel"
-    [ngClass]="{'is-invalid':f.submit && name.invalid}" required
-    >
+    #lName="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && lName.invalid}"required/>
   </div>
 </div>
 <div class="form-group">
@@ -37,30 +39,49 @@
 <div class="form-row" >
   <div class="form-group col-md-7">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress">
+    <input type="text" class="form-control" id="addr" name="addr"
+    [(ngModel)]="model.addr"
+    #addr="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && addr.invalid}" required
+    >
   </div>
   <div class="form-group col-md-2">
     <label for="inputZip">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
+    <input type="text" class="form-control" id="inputZip" name="zip"
+    [(ngModel)]="model.zip"
+    #zip="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && zip.invalid}"required/>
   </div>
 </div>
 <div class="form-row" >
   <div class="form-group col-md-4">
     <label for="inputCity">City</label>
-    <input type="text" class="form-control" id="inputCity">
+    <input type="text" class="form-control" id="inputCity" name="city"
+    [(ngModel)]="model.city"
+    #city="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && city.invalid}"required/>
   </div>
   <div class="form-group col-md-5">
     <label for="inputCountry">Country</label>
-    <input type="text" class="form-control" id="inputCountry">
+    <input type="text" class="form-control" id="inputCountry" name="country"
+    [(ngModel)]="model.country"
+    #country="ngModel"
+    [ngClass]="{'is-invalid':f.submitted && country.invalid}"required/>
   </div>
 </div>
 <div class="form-group">
   <label for="email">Email</label>
-  <input type="text" class="form-control col-lg-9" id="email">
+  <input type="text" class="form-control col-lg-9" id="email" name="email"
+  [(ngModel)]="model.email"
+  #email="ngModel"
+  [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
 </div>
 <div class="form-group">
   <label for="phone">Phone</label>
-  <input type="text" class="form-control col-lg-9" id="phone">
+  <input type="text" class="form-control col-lg-9" id="phone" name="phone"
+  [(ngModel)]="model.phone"
+  #phone="ngModel"
+  [ngClass]="{'is-invalid':f.submitted && phone.invalid}"required/>
 </div>
 <div class="form-group">
   <label for="type">Type</label>
