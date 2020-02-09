@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,13 @@ public class UserController {
     }
  
     @PostMapping("/api/users")
-    void addUser(@RequestBody User user) {
+    public void addUser(@RequestBody User user) {
         userRepository.save(user);
+    }
+    
+    @PostMapping("/api/users/{conf_id}")
+    public void addUser(@PathVariable String conf_id,@RequestBody User user) {
+    	user.setConf(conf_id);
+    	userRepository.save(user);
     }
 }
