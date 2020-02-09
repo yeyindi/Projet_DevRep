@@ -22,12 +22,19 @@ public class ProjectApplication {
 	@Bean
     CommandLineRunner init(UserRepository userRepository,ConfRepository confRepository) {
         return args -> {
+        	Conf conf = new Conf("Spring conf","10","20");
+        	Conf conf2 = new Conf("Spring conf2","100","200");
+        	confRepository.save(conf);
+        	confRepository.save(conf2);
+        	String n = " test ";
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
                 User user = new User("Sopena", name , name, name, name, name, name, name, name.toLowerCase() + "@domain.com", name, name);
+                user.setConf(conf);
                 userRepository.save(user);
             });
-            Conf conf = new Conf("Spring conf","Tewfik");
-            confRepository.save(conf);
+            User user = new User("Sopena", n , n, n, n, n, n, n, n.toLowerCase() + "@domain.com", n, n);
+            user.setConf(conf2);
+            userRepository.save(user);
             confRepository.findAll().forEach(System.out::println);
             userRepository.findAll().forEach(System.out::println);
         };
