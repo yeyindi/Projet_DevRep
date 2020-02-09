@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -23,12 +22,11 @@ public class User {
     private final String email;
     private final String phone;
     private final String type;
-    
-    @ManyToOne
-    private Conf conf;
+    private String conf_id;
     
     public User(String title, String fName, String lName, String institution, String addr, String zip,
 			String city, String country, String email, String phone, String type) {
+		this.conf_id = "";
 		this.title = title;
 		this.fName = fName;
 		this.lName = lName;
@@ -43,7 +41,8 @@ public class User {
 	}
     
     public User() {
-    	this.title = "";
+    	this.conf_id = "";
+		this.title = "";
 		this.fName = "";
 		this.lName = "";
 		this.institution = "";
@@ -112,15 +111,15 @@ public class User {
 	public String toString() {
 		return "User [id=" + user_id + ", title=" + title + ", fName=" + fName + ", lName=" + lName + ", institution="
 				+ institution + ", addr=" + addr + ", zip=" + zip + ", city=" + city + ", country=" + country
-				+ ", email=" + email + ", phone=" + phone + ", type=" + type+", conf_id=" + conf.getId()+ "]";
+				+ ", email=" + email + ", phone=" + phone + ", type=" + type+", conf_id=" + conf_id+ "]";
 	}
 
-	public Conf getConf() {
-		return conf;
+	public String getConf() {
+		return conf_id;
 	}
 
-	public void setConf(Conf conf) {
-		this.conf = conf;
+	public void setConf(String conf) {
+		this.conf_id = conf;
 	}
      
     
