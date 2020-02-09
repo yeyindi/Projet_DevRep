@@ -9,36 +9,44 @@ import javax.persistence.Id;
 public class Conf {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long conf_id;
 	private final String title;
-	private final String admin;
+	private final String early;
+	private final String late;
 	
-	public Conf(String title, String admin) {
+	public Conf(String title, String early, String late) {
 		this.title = title;
-		this.admin = admin;
+		this.early = early;
+		this.late = late;
 	}
 	
 	public Conf() {
 		this.title = "";
-		this.admin = "";
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.early = "";
+		this.late = "";
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public String getAdmin() {
-		return admin;
+	public String getEarly() {
+		return early;
 	}
+
+	public String getLate() {
+		return late;
+	}
+
+	public long getId() {
+		return conf_id;
+	}
+
+	public void setId(long id) {
+		this.conf_id = id;
+	}
+
 	
 
 }
