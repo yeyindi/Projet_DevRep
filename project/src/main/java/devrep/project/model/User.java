@@ -4,13 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
      
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long user_id;
     private final String title;
     private final String fName;
     private final String lName;
@@ -22,6 +23,9 @@ public class User {
     private final String email;
     private final String phone;
     private final String type;
+    
+    @ManyToOne
+    private Conf conf;
     
     public User(String title, String fName, String lName, String institution, String addr, String zip,
 			String city, String country, String email, String phone, String type) {
@@ -53,11 +57,11 @@ public class User {
     }
 
 	public long getId() {
-		return id;
+		return user_id;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.user_id = id;
 	}
 
 	public String getTitle() {
@@ -106,9 +110,17 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", title=" + title + ", fName=" + fName + ", lName=" + lName + ", institution="
+		return "User [id=" + user_id + ", title=" + title + ", fName=" + fName + ", lName=" + lName + ", institution="
 				+ institution + ", addr=" + addr + ", zip=" + zip + ", city=" + city + ", country=" + country
-				+ ", email=" + email + ", phone=" + phone + ", type=" + type + "]";
+				+ ", email=" + email + ", phone=" + phone + ", type=" + type+", conf_id=" + conf.getId()+ "]";
+	}
+
+	public Conf getConf() {
+		return conf;
+	}
+
+	public void setConf(Conf conf) {
+		this.conf = conf;
 	}
      
     
