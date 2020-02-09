@@ -29,11 +29,11 @@ public class ProjectApplication {
         	String n = " test ";
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
                 User user = new User("Sopena", name , name, name, name, name, name, name, name.toLowerCase() + "@domain.com", name, name);
-                user.setConf(conf);
+                user.setConf(""+conf.getId());
                 userRepository.save(user);
             });
             User user = new User("Sopena", n , n, n, n, n, n, n, n.toLowerCase() + "@domain.com", n, n);
-            user.setConf(conf2);
+            user.setConf(""+conf2.getId());
             userRepository.save(user);
             confRepository.findAll().forEach(System.out::println);
             userRepository.findAll().forEach(System.out::println);
