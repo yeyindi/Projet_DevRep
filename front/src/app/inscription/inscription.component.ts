@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
-
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http'
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
+  //@Input() conf_id:ConfModelView;
   types =["Type 1: 10$","Type 2: 20$","Type 3: 30$"];
   model:FormViewModel = {
     title:'',
@@ -20,9 +21,10 @@ export class InscriptionComponent implements OnInit {
     email:'',
     phone:'',
     type:'',
+    conf_id:'',
   }
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,private route:ActivatedRoute) {
     let url = "localhost:api/getPrice";
     this.http.get(url).subscribe(
       res => {
@@ -31,7 +33,7 @@ export class InscriptionComponent implements OnInit {
 
       },
       err => {
-      //  alert("An error has occured, can not collect prices from server");
+        alert("An error has occured, can not collect prices from server");
       }
     );
   }
@@ -44,15 +46,16 @@ export class InscriptionComponent implements OnInit {
     //verify users inputs
 
     //send request
-    let url = "localhost:8080/api/inscription";
-    this.http.get(url).subscribe(
+    let url = "http://localhost:8080/api/users";
+    this.model["conf_id"] = this.route.snapshot.params["id"];
+    this.http.post(url,this.model).subscribe(
       res => {
         //some codes
         alert("it works");
-        let i = 1;
+
       },
       err => {
-        alert("An error has occured");
+        console.log(err);
       }
     );
   }
@@ -69,4 +72,5 @@ export interface FormViewModel{
   email:string;
   phone:string;
   type:string;
+  conf_id:string;
 }

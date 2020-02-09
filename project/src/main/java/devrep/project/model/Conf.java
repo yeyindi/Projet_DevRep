@@ -10,7 +10,7 @@ public class Conf {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long conf_id;
+    private String conf_id;
 	private final String title;
 	private final String early;
 	private final String late;
@@ -39,11 +39,11 @@ public class Conf {
 		return late;
 	}
 
-	public long getId() {
+	public String getId() {
 		return conf_id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.conf_id = id;
 	}
 

@@ -15,7 +15,7 @@ const appRoutes:Routes = [
   component:LoginComponent
   },
   {
-  path:'inscription',
+  path:'inscription/:id',
   component:InscriptionComponent
   },
   {

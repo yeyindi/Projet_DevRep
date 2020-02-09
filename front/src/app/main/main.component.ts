@@ -11,20 +11,19 @@ export class MainComponent implements OnInit {
   details = ["01/01/2020-01/02/2020:Early Registration","02/02/2020-10/02/2020:Late Registration",
 "01/01/2020-01/02/2020:Early Registration","02/02/2020-10/02/2020:Late Registration",
 "01/01/2020-01/02/2020:Early Registration","02/02/2020-10/02/2020:Late Registration"]
-  models:ConfModelView[]= [{title:"Conf 1",early:"01/01/2020-01/02/2020:Early Registration",
-late:"02/02/2020-10/02/2020:Late Registration"},{title:"Conf 2",early:"01/01/2020-01/02/2020:Early Registration"
-,late:"02/02/2020-10/02/2020:Late Registration"}];
+  models:ConfModelView[];
   constructor(private http:HttpClient) {
       //get conf
-      let url = "localhost:8080/api/getConf";
-      this.http.get(url).subscribe(
+      let url = "http://localhost:8080/api/conf";
+      this.http.get<ConfModelView[]>(url).subscribe(
         res => {
           //some codes
-          alert("it works");
-          let i = 1;
+          console.log("it works");
+          this.models = res
+        
         },
         err => {
-          //alert("An error has occured");
+          console.error(err);
         }
       );
   }
@@ -37,4 +36,5 @@ export interface ConfModelView{
   title:string;
   early:string;
   late:string;
+  id:string;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
     confirm:""
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
 
   ngOnInit() {
   }
@@ -23,15 +24,14 @@ export class RegisterComponent implements OnInit {
 
 
     //send request
-    let url = "localhost:8080/api/register";
-    this.http.get(url).subscribe(
+    let url = "http://localhost:8080/api/register";
+    this.http.post(url,this.model).subscribe(
       res => {
-        //some codes
-        alert("it works");
-        let i = 1;
-      },
+        console.log("succes");
+        this.router.navigate(["login"]);
+    },
       err => {
-        alert("An error has occured");
+        alert("error, can not create a new account, try later");
       }
     );
   }

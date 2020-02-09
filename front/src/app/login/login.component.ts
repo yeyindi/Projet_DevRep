@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       res => {
         //some codes
         alert("it works");
-        let i = 1;
       },
       err => {
         alert("An error has occured");

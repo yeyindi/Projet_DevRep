@@ -1,0 +1,10 @@
+/root/Projet_DevRep/project/src/main/java/devrep/project/controller/UserController.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/interfaces/UserRepository.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/model/Conf.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/model/User.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/controller/RegisterController.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/ProjectApplication.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/controller/ConfController.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/interfaces/RegisterRepository.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/interfaces/ConfRepository.java
+/root/Projet_DevRep/project/src/main/java/devrep/project/model/Register.java

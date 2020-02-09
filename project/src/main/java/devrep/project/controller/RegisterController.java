@@ -28,6 +28,7 @@ public class RegisterController {
 
 	@PostMapping("/api/register")
 	void addUser(@RequestBody Register register) {
+		System.out.println("received post");
 		registerRepository.save(register);
 	}
 

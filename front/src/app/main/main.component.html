@@ -1,7 +1,7 @@
 <h4>Recent updates</h4>
 <div class="media text-muted pt-3" *ngFor="let model of models">
   <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-    <a  routerLink="/inscription" class="d-block text-gray-dark">{{ model.title }}</a>
+    <a  routerLink="/inscription/{{ model.id}}" class="d-block text-gray-dark">{{ model.title }}</a>
     {{ model.early }}<br>
     {{ model.late }}
   </p>
