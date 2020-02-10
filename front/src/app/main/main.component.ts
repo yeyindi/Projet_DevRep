@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
           //some codes
           console.log("it works");
           this.models = res
-        
+
         },
         err => {
           console.error(err);
@@ -34,7 +34,8 @@ export class MainComponent implements OnInit {
 
 export interface ConfModelView{
   title:string;
-  early:string;
-  late:string;
-  id:string;
+  early_dateFrom:string;
+  early_dateTo:string;
+  late_dateTo:string;
+  late_dateFrom:string;
 }

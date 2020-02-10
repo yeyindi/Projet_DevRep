@@ -21,9 +21,15 @@ public class RegisterController {
 		this.registerRepository = registerRepository;
 	}
 
-	@GetMapping("/api/register")
-	public List<Register> getUsers() {
-		return (List<Register>) registerRepository.findAll();
+	@PostMapping("/api/login")
+	public Register getUsers(@RequestBody Register register) {
+		List<Register>  l = (List<Register>) registerRepository.findAll();
+		for(Register r:l) {
+			if(r.getEmail().contentEquals(register.getEmail()) && r.getPassword().contentEquals(register.getPassword())) {
+				return r;
+			}
+		}
+		return null;
 	}
 
 	@PostMapping("/api/register")

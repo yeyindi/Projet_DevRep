@@ -1,9 +1,9 @@
-<form class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
+<form *ngIf="!isLoggedIn" class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
 <div class="form-group">
   <label for="email">Email</label>
   <input type="email" class="form-control col-lg-9" id="email"
   name="email"
-  [(ngModel)]="model.email"
+  [(ngModel)]="modelLogin.email"
   #email="ngModel"
   [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
 </div>
@@ -11,7 +11,7 @@
   <label for="password">Password</label>
   <input type="password" class="form-control col-lg-9" id="password"
   name="password"
-  [(ngModel)]="model.password"
+  [(ngModel)]="modelLogin.password"
   #password="ngModel"
   [ngClass]="{'is-invalid':f.submitted && password.invalid}"required/>
 </div>
@@ -21,4 +21,48 @@
       <a routerLink="/register">Create new account</a>
     </small>
   </div>
+</form>
+
+
+<form *ngIf="isLoggedIn" class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" class="form-control col-lg-8" id="title"
+  name="title"
+  [(ngModel)]="modelConf.title"
+  #email="ngModel"
+  [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
+</div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="earlyDate">Eearly date from</label>
+      <input class="form-control" type="date">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="earlyDate">Eearly date to</label>
+      <input class="form-control" type="date">
+    </div>
+  </div>
+  <div class="control-group" id="Eprices">
+    <label class="control-label" for="early">Prices</label>
+    <div class="controls">
+        <div class="input-group cpl-xs-3">
+          <input class="form-control col-lg-7" name="earlies[]" type="text" placeholder="Prices"/>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary">+</button>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="earlyDate">Eearly date from</label>
+      <input class="form-control" type="date">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="earlyDate">Eearly date to</label>
+      <input class="form-control" type="date">
+    </div>
+  </div>
+<button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3" type="submit">Submit </button>
 </form>

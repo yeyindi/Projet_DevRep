@@ -22,8 +22,10 @@ public class ProjectApplication {
 	@Bean
     CommandLineRunner init(UserRepository userRepository,ConfRepository confRepository) {
         return args -> {
-        	Conf conf = new Conf("Spring conf","10","20");
-        	Conf conf2 = new Conf("Spring conf2","100","200");
+        	Conf conf = new Conf("Spring conf",new String[]{"vip: 100€","normal: 10€"},"1/1/2020","1/2/2020",new String[]{"vip: 200€","normal; 100€"},"2/2/2020",
+        			"3/3/2020","test") ;
+        	Conf conf2 = new Conf("Spring conf2",new String[]{"vip: 30€","normal; 20€"},"1/1/2020","1/2/2020",new String[]{"vip: 200€","normal; 100€"},
+        			"2/2/2020","3/3/2020","test");
         	confRepository.save(conf);
         	confRepository.save(conf2);
         	String n = " test ";
