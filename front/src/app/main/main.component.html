@@ -2,8 +2,8 @@
 <div class="media text-muted pt-3 border-bottom border-gray" *ngFor="let model of models">
   <p class="media-body pb-3 mb-0 small lh-125 offset-sm-1">
     <a  routerLink="/inscription/{{ model.id}}" class="d-block text-gray-dark">{{ model.title }}</a>
-    Early date: {{ model.early_dateFrom }} to {{model.early_dateTo}}<br>
-    Late date: {{ model.late_dateFrom }} to {{model.late_dateFrom}}
+    Early date: {{ model.early_date }} <br>
+    Late date: {{ model.late_date }}
   </p>
 </div>
 <div class="form-row text-center">

@@ -13,13 +13,15 @@ export class LoginComponent implements OnInit {
     email:"",
     password:"",
     confirm:""
-  }
+  };
   modelConf:ConfModelView={
     title:"",
     early:"",
-    late:""
+    late:"",
+    earlyPrices:Array<[string,number]>(),
+    latePrices:Array<[string,number]>(),
 
-  }
+  };
   isLoggedIn = true;
 
   constructor(private http:HttpClient) { }
@@ -55,10 +57,12 @@ export class LoginComponent implements OnInit {
     let url = "http://localhost:8080/api/conf"
     this.http.post(url,this.modelConf).subscribe(
       res => {
-
+          alert("it work ");
+          console.log(res);
       },
       err => {
-
+        alert("error");
+        console.log(err);
       }
     )
   }
@@ -79,4 +83,6 @@ export interface ConfModelView{
   title:string;
   early:string;
   late:string;
+  earlyPrices:Array<[string,number]>;
+  latePrices:Array<[string,number]>;
 }

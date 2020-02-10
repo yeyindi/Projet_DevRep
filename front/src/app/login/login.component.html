@@ -24,45 +24,47 @@
 </form>
 
 
-<form *ngIf="isLoggedIn" class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
+<form *ngIf="isLoggedIn" class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && publishConf()"  novalidate>
 <div class="form-group">
   <label for="title">Title</label>
   <input type="text" class="form-control col-lg-8" id="title"
   name="title"
   [(ngModel)]="modelConf.title"
-  #email="ngModel"
-  [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
+  #title="ngModel"
+  [ngClass]="{'is-invalid':f.submitted && title.invalid}"required/>
 </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="earlyDate">Eearly date from</label>
-      <input class="form-control" type="date">
+    <div class="form-group">
+      <label for="earlyDate">Eearly date</label>
+      <input class="form-control col-lg-8" type="date"
+      name="early"
+      [(ngModel)]="modelConf.early_date"
+      [ngClass]="{'is-invalid':f.submitted && early.invalid}"required
+      #early="ngModel"
+      />
     </div>
-    <div class="form-group col-md-4">
-      <label for="earlyDate">Eearly date to</label>
-      <input class="form-control" type="date">
-    </div>
-  </div>
   <div class="control-group" id="Eprices">
     <label class="control-label" for="early">Prices</label>
     <div class="controls">
         <div class="input-group cpl-xs-3">
-          <input class="form-control col-lg-7" name="earlies[]" type="text" placeholder="Prices"/>
+          <input class="form-control col-lg-7" name="pricesE" type="text"
+          [(ngModel)] ="modelConf.prices[0]"
+          #pricesE="ngModel"
+          [ngClass]="{'is-invalid':f.submitted && pricesE.invalid}" required
+          />
           <div class="input-group-append">
             <button type="button" class="btn btn-outline-secondary">+</button>
           </div>
         </div>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="earlyDate">Eearly date from</label>
-      <input class="form-control" type="date">
+    <div class="form-group">
+      <label for="earlyDate">Late date</label>
+      <input class="form-control col-lg-8" type="date"
+      name="late"
+      #late="ngModel"
+      [(ngModel)] = "modelConf.late_date"
+      [ngClass]="{'is-invalid':f.submitted && late.invalid}" required
+      />
     </div>
-    <div class="form-group col-md-4">
-      <label for="earlyDate">Eearly date to</label>
-      <input class="form-control" type="date">
-    </div>
-  </div>
 <button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3" type="submit">Submit </button>
 </form>

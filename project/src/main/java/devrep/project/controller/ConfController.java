@@ -43,7 +43,7 @@ public class ConfController {
 		if(f.isPresent()) {
 			Conf cf = f.get();
 			SimpleDateFormat  format = new SimpleDateFormat("mm/dd/yyyy");
-			Date d1 = format.parse(cf.getEarly_dateTo());
+			Date d1 = format.parse(cf.getEarly_date());
 			Date d2 = new Date();
 			if(d2.after(d1)) {
 				return cf.getLate_price();

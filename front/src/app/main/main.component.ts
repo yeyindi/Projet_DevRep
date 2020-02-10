@@ -34,8 +34,6 @@ export class MainComponent implements OnInit {
 
 export interface ConfModelView{
   title:string;
-  early_dateFrom:string;
-  early_dateTo:string;
-  late_dateTo:string;
-  late_dateFrom:string;
+  early_date:string;
+  late_date:string;
 }
