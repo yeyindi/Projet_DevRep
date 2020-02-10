@@ -9,7 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class InscriptionComponent implements OnInit {
   //@Input() conf_id:ConfModelView;
-  types =["Type 1: 10$","Type 2: 20$","Type 3: 30$"];
+  types :string[];
+  exist = false;
   model:FormViewModel = {
     title:'',
     fName:'',
@@ -25,11 +26,15 @@ export class InscriptionComponent implements OnInit {
   }
 
   constructor(private http:HttpClient,private route:ActivatedRoute) {
-    let url = "localhost:api/getPrice";
-    this.http.get(url).subscribe(
+    let url = "http://localhost:8080/api/conf/types/"+this.route.snapshot.params["id"];
+    this.http.get<string[]>(url).subscribe(
       res => {
         //some codes
-        alert("it works");
+        if(res.length > 0){
+            this.types = res;
+            this.exist = true;
+        }
+
 
       },
       err => {
@@ -55,6 +60,7 @@ export class InscriptionComponent implements OnInit {
 
       },
       err => {
+        alert("Inscription failed, try later");
         console.log(err);
       }
     );
@@ -73,4 +79,8 @@ export interface FormViewModel{
   phone:string;
   type:string;
   conf_id:string;
+}
+
+export interface ConfModelView{
+
 }

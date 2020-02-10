@@ -24,7 +24,7 @@ public class UserController {
     public UserController(UserRepository userRepository) {
     	this.userRepository = userRepository;
     	MailSender = new SendMailUtils();
-    	MailSender.setInitData("admin@gmail.com", "123456789");
+    	MailSender.setInitData("devrepsar@gmail.com", "123456789@a");
     }
  
     @GetMapping("/api/users")
@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/api/users")
     public void addUser(@RequestBody User user) {
     	String text = user.getfName()+""+user.getlName()+" your demanded are sended to admin, please wait for validation"; 
-    	MailSender.simpleMailSend("yindiye@gmail.com", "test", text);
+    	MailSender.simpleMailSend("devrepsar@gmail.com", "test", text);
         userRepository.save(user);
     }
     
