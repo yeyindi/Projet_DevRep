@@ -14,11 +14,13 @@ public class Register {
 	private String email;
 	private String password;
 	private String confirm;
+	private String super_admin;
 	
-	public Register(String email, String password, String confirm) {
+	public Register(String email, String password, String confirm,String super_admin) {
 		this.email = email;
 		this.password = password;
 		this.confirm = confirm;
+		this.super_admin = super_admin;
 	}
 	
 	public Register() {
@@ -57,6 +59,14 @@ public class Register {
 
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
+	}
+
+	public String getSuper_admin() {
+		return super_admin;
+	}
+
+	public void setSuper_admin(String super_admin) {
+		this.super_admin = super_admin;
 	}
 
 }
