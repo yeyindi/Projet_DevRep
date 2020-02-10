@@ -24,25 +24,24 @@ public class RegisterController {
 		this.registerRepository = registerRepository;
 	}
 
-	@PostMapping("/api/login")
-	public Register getUsers(@RequestBody Register register) {
-		List<Register>  l = (List<Register>) registerRepository.findAll();
-		for(Register r:l) {
-			if(r.getEmail().contentEquals(register.getEmail()) && r.getPassword().contentEquals(register.getPassword())) {
-				return r;
-			}
-		}
-		return null;
-	}
-
-	@PostMapping("/api/register")
-	public void addUser(@RequestBody Register register) {
-		registerRepository.save(register);
+	
+	/*Recuperer tout les registers*/
+	@GetMapping("/api/register")
+	public List<Register> getRegister() {
+		return (List<Register>) registerRepository.findAll();
 	}
 	
+	
+	/*cherche le register avec l'id*/
 	@GetMapping("/api/register/{id}")
-	public Register findUser(@PathVariable Long id) {
+	public Register findRegister(@PathVariable Long id) {
 		return registerRepository.findById(id).orElseThrow(() -> new RegistrationNotFoundException(id));
+	}
+	
+	/* ajouter un register */
+	@PostMapping("/api/register")
+	public void addRegister(@RequestBody Register register) {
+		registerRepository.save(register);
 	}
 	
 	@DeleteMapping("/api/register/{id}")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +18,14 @@ public class GestionConfController {
 
 	private final GestionConfRepository gestionConfRepository;
 
+	
+	/* Classe pour gérer les droits de chacun*/
 	public GestionConfController(GestionConfRepository gestionConfRepository) {
 		this.gestionConfRepository = gestionConfRepository;
 	}
 
 	@GetMapping("/api/gestion")
-	public List<GestionConf> getUsers() {
+	public List<GestionConf> getGestion() {
 		return (List<GestionConf>) gestionConfRepository.findAll();
 	}
 

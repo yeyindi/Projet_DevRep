@@ -14,16 +14,14 @@ public class GestionConf {
 	private final long register_id;
 	private final long conf_id;
 	
-	public GestionConf(long gestion_id, long register_id) {
+	public GestionConf(long register_id, long conf_id) {
 		super();
-		this.conf_id = 0;
-		this.gestion_id = gestion_id;
+		this.conf_id = conf_id;
 		this.register_id = register_id;
 	}
 	
 	public GestionConf() {
 		this.conf_id = 0;
-		this.gestion_id = 0;
 		this.register_id = 0;
 	}
 
