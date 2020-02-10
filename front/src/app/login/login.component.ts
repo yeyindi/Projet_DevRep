@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   };
   isLoggedIn = true;
-
+  index = 0;
   constructor(private http:HttpClient) { }
 
   ngOnInit() {

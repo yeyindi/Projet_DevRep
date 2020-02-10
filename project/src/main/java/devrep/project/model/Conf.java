@@ -70,8 +70,6 @@ public class Conf {
 
 	public String getRegistration_type() {
 		return registration_type;
-	}
-
-	
+	}	
 
 }
