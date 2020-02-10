@@ -8,13 +8,18 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import java.util.Map;
+import java.io.File;
 import java.util.Properties;
 
 public class SendMailUtils {
 
     private JavaMailSenderImpl mailSender;
 
+    
+    /* initialiser le mail sender avec le server google
+     * username : ton compte gmail
+     * passwd : mdp du compte gmail
+     * */
     public void setInitData(String username,String passwd){
 
         mailSender = new JavaMailSenderImpl();
@@ -30,6 +35,11 @@ public class SendMailUtils {
         mailSender.setJavaMailProperties(javaMailProperties);
     }
 
+    /*Envoyer un mail simple sans piece jointe
+     *Email : mail à envoyer
+     *Subject : sujet
+     *Text : contenu
+     */
     public void simpleMailSend(String email,String subject,String text) {
         SimpleMailMessage message=new SimpleMailMessage();
         message.setFrom(mailSender.getUsername());
@@ -40,7 +50,13 @@ public class SendMailUtils {
     }
 
 
-    public void attachedSend(String email,String subject,String text,Map<String,String> paths) throws MessagingException {
+    /*Envoyer un mail avec piece jointe
+     * Email : mail à envoyer
+     *Subject : sujet
+     *Text : contenu
+     *PathToAttachment : chemin vers la piece jointe ( ici on donnera celui du pdf) 
+     * */
+    public void attachedSend(String email,String subject,String text, String pathToAttachment) throws MessagingException {
 
         MimeMessage message = mailSender.createMimeMessage();
 
@@ -51,16 +67,8 @@ public class SendMailUtils {
         helper.setSubject(subject);
         helper.setText(text);
 
-        if (paths!=null){
-            paths.forEach((k,v)->{
-                 FileSystemResource file = new FileSystemResource(v);
-                 try {
-                     helper.addAttachment(k, file);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        }
+        FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
+        helper.addAttachment(file.getFilename(), file);
         mailSender.send(message);
     }
 
