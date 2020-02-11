@@ -12,11 +12,11 @@ public class LoggerUtils {
 	}
 	
 	public void LogSuccess(String message) {
-		logger.info(message);
+		logger.info("SUCCESS : "+message);
 	}
 	
 	public void LogFail(String message) {
-		logger.warn(message);
+		logger.warn("FAIL : "+message);
 	}
 
 }
