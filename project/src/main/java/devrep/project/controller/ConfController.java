@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import devrep.project.exception.ConfNotFoundException;
 import devrep.project.interfaces.ConfRepository;
 import devrep.project.model.Conf;
+import org.springframework.data.util.Pair;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -55,6 +56,8 @@ public class ConfController {
 
 	@PostMapping("/api/conf")
 	void addUser(@RequestBody Conf conf) {
+		System.out.println(conf.getEarly_date()+"\n"+
+				conf.getEarly_price()[0]+"\n"+conf.getLate_date()+"\n"+conf.getLate_price()[0]+"\n"+conf.getTitle());
 		confRepository.save(conf);
 	}
 	@GetMapping("/api/conf/types/{id}")

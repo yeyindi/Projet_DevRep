@@ -43,21 +43,52 @@
       #early="ngModel"
       />
     </div>
-  <div class="control-group" id="Eprices">
     <label class="control-label" for="early">Prices</label>
-    <div class="controls">
-        <div class="input-group cpl-xs-3">
-          <input class="form-control col-lg-7" name="priceE" type="text"
-          [(ngModel)] ="modelConf.earlyPrice"
-          #priceE="ngModel"
-          [ngClass]="{'is-invalid':f.submitted && priceE.invalid}" required
-          />
-          <div class="input-group-append">
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5" id="inputZip" name="eprice1"
+        [(ngModel)]="eprice1[1]"
+        #eprice1="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && eprice1.invalid}"required/>
+      <input class="form-control col-lg-2" name="epriceName1" type="number"
+            [(ngModel)] ="eprice1[2]"
+            #epriceName1="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && epriceName1.invalid}" required
+            />
+            <div class="input-group-append col-sg-0">
             <button type="button" class="btn btn-outline-secondary">€</button>
-          </div>
-        </div>
+            </div>
     </div>
-  </div>
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5" id="inputZip" name="eprice2"
+        [(ngModel)]="eprice2[1]"
+        #eprice2="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && eprice2.invalid}"/>
+      <input class="form-control col-lg-2" name="epriceName2" type="number"
+            [(ngModel)] ="eprice2[2]"
+            #epriceName2="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && epriceName2.invalid}"
+            />
+            <div class="input-group-append col-sg-0">
+            <button type="button" class="btn btn-outline-secondary">€</button>
+            </div>
+    </div>
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5" id="inputZip" name="eprice3"
+        [(ngModel)]="eprice3[1]"
+        #eprice3="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && eprice3.invalid}"/>
+      <input class="form-control col-lg-2" name="epriceName3" type="number"
+            [(ngModel)] ="eprice3[2]"
+            #epriceName3="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && epriceName3.invalid}"
+            />
+            <div class="input-group-append col-sg-0">
+            <button type="button" class="btn btn-outline-secondary">€</button>
+            </div>
+    </div>
     <div class="form-group">
       <label for="earlyDate">Late date</label>
       <input class="form-control col-lg-8" type="date"
@@ -67,20 +98,51 @@
       [ngClass]="{'is-invalid':f.submitted && late.invalid}" required
       />
     </div>
-    <div class="control-group" id="Lprices">
-      <label class="control-label" for="late">Prices</label>
-      <div class="controls">
-          <div class="input-group">
-            <input class="form-control col-lg-7" name="priceL" type="text"
-            [(ngModel)] ="modelConf.latePrice"
-            #priceE="ngModel"
-            [ngClass]="{'is-invalid':f.submitted && priceL.invalid}" required
+    <label>Prices</label>
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5"  name="lprice1"
+        [(ngModel)]="lprice1[1]"
+        #lprice1="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && lprice1.invalid}"required/>
+      <input class="form-control col-lg-2" name="lpriceName1" type="number"
+            [(ngModel)] ="lprice1[2]"
+            #lpriceName1="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && lpriceName1.invalid}" required
             />
-            <div class="input-group-append">
-              <button type="button" class="btn btn-outline-secondary">€</button>
+            <div class="input-group-append col-sg-0">
+            <button type="button" class="btn btn-outline-secondary">€</button>
             </div>
-          </div>
-      </div>
     </div>
-<button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3 " type="submit">Submit </button>
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5" id="inputZip" name="lprice2"
+        [(ngModel)]="lprice2[1]"
+        #lprice2="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && lprice2.invalid}"/>
+      <input class="form-control col-lg-2" name="lpriceName2" type="number"
+            [(ngModel)] ="lprice2[2]"
+            #lpriceName2="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && lpriceName2.invalid}"
+            />
+            <div class="input-group-append col-sg-0">
+            <button type="button" class="btn btn-outline-secondary">€</button>
+            </div>
+    </div>
+    <div class="input-group ">
+        <input type="text" class="form-control col-lg-5" id="inputZip" name="lprice3"
+        [(ngModel)]="lprice3[1]"
+        #lprice3="ngModel"
+        [ngClass]="{'is-invalid':f.submitted && lprice3.invalid}"/>
+      <input class="form-control col-lg-2" name="lpriceName3" type="number"
+            [(ngModel)] ="lprice3[2]"
+            #lpriceName3="ngModel"
+            pattern=[1-9][0-9]{0,}
+            [ngClass]="{'is-invalid':f.submitted && lpriceName3.invalid}"
+            />
+            <div class="input-group-append col-sg-0">
+            <button type="button" class="btn btn-outline-secondary">€</button>
+            </div>
+    </div>
+<button type="submit"  oncick="addPrice()" class="btn btn-primary col-lg-2 mt-3 offset-lg-3 " type="submit">Submit </button>
 </form>

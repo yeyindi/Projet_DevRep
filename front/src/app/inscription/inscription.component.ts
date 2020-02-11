@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class InscriptionComponent implements OnInit {
   //@Input() conf_id:ConfModelView;
-  types :string[];
+  types :Array<[string,number]>;
   exist = false;
   model:FormViewModel = {
     title:'',
@@ -27,7 +27,7 @@ export class InscriptionComponent implements OnInit {
 
   constructor(private http:HttpClient,private route:ActivatedRoute) {
     let url = "http://localhost:8080/api/conf/types/"+this.route.snapshot.params["id"];
-    this.http.get<string[]>(url).subscribe(
+    this.http.get<Array<[string,number]>>(url).subscribe(
       res => {
         //some codes
         if(res != null){

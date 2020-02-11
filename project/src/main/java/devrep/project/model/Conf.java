@@ -34,9 +34,9 @@ public class Conf {
 	
 	public Conf() {
 		this.title = "";
-		this.early_prices = new String[] {};
+		this.early_prices = new String[3];
 		this.early_date = "";
-		this.late_prices = new String[] {};
+		this.late_prices = new String[3];
 		this.late_date = "";
 		this.registration_type = "";
 	}

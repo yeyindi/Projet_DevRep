@@ -18,13 +18,20 @@ export class LoginComponent implements OnInit {
     title:"",
     early:"",
     late:"",
-    earlyPrice:"",
-    latePrice:"",
+    early_prices:["","",""],
+    late_prices:["","",""]
+
 
   };
-  isLoggedIn = false;
+  isLoggedIn = true;
   indexEarly = 0;
   indexLate = 0;
+  eprice1:[string,string];
+  eprice2:[string,string];
+  eprice3:[string,string];
+  lprice1:[string,string];
+  lprice2:[string,string];
+  lprice3:[string,string];
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
@@ -32,8 +39,6 @@ export class LoginComponent implements OnInit {
 
   public sendForm(){
     //check user's inputs
-
-
     //send request
     let url = "http://localhost:8080/api/login";
     this.modelLogin["confirm"] = this.modelLogin["password"];
@@ -55,6 +60,14 @@ export class LoginComponent implements OnInit {
   }
 
   public publishConf(){
+    console.log(this.eprice1[1])
+    this.modelConf.early_prices[0] += this.eprice1[1]//+": "+this.eprice1[2];
+    this.modelConf.early_prices[1] += this.eprice2[1]//+": "+this.eprice2[2];
+    this.modelConf.early_prices[2] += this.eprice3[1]//+": "+this.eprice3[2];
+    this.modelConf.late_prices[0] += this.lprice1[1]//+": "+this.lprice1[2];
+    this.modelConf.late_prices[1] += this.lprice2[1]//+": "+this.lprice2[2];
+    this.modelConf.late_prices[2] += this.lprice3[1]//+": "+this.lprice3[2];
+    console.log(this.modelConf);
     let url = "http://localhost:8080/api/conf"
     this.http.post(url,this.modelConf).subscribe(
       res => {
@@ -84,6 +97,6 @@ export interface ConfModelView{
   title:string;
   early:string;
   late:string;
-  earlyPrice:string;
-  latePrice:string;
+  early_prices:string[];
+  late_prices:string[];
 }
