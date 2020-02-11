@@ -13,21 +13,6 @@ public class Conf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long conf_id;
 	private final String title;
-<<<<<<< HEAD
-	private final String[] early_prices;
-	private final String early_date;
-	private final String[] late_prices;
-	private final String late_date;
-	private final String registration_type;
-	
-	public Conf(String title, String[] early_prices, String early_date, String[] late_prices, String late_date,
-			String registration_type) {
-		super();
-		this.title = title;
-		this.early_prices = early_prices;
-		this.early_date = early_date;
-		this.late_prices = late_prices;
-=======
 	private final String early_price;
 	private final String early_date;
 	private final String late_price;
@@ -41,22 +26,15 @@ public class Conf {
 		this.early_price = early_price;
 		this.early_date = early_date;
 		this.late_price = late_price;
->>>>>>> 87cab0c4743cfdc8d67a697da8de7ffdf7c53a9e
 		this.late_date = late_date;
 		this.registration_type = registration_type;
 	}
 	
 	public Conf() {
 		this.title = "";
-<<<<<<< HEAD
-		this.early_prices = new String[5];
-		this.early_date = "";
-		this.late_prices = new String[5];
-=======
 		this.early_price = "";
 		this.early_date = "";
 		this.late_price = "";
->>>>>>> 87cab0c4743cfdc8d67a697da8de7ffdf7c53a9e
 		this.late_date = "";
 		this.registration_type = "";
 	}

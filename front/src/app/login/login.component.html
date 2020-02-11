@@ -47,7 +47,7 @@
     <div class="controls">
         <div class="input-group cpl-xs-3">
           <input class="form-control col-lg-7" name="pricesE" type="text"
-          [(ngModel)] ="modelConf.prices[0]"
+          [(ngModel)] ="modelConf.prices"
           #pricesE="ngModel"
           [ngClass]="{'is-invalid':f.submitted && pricesE.invalid}" required
           />

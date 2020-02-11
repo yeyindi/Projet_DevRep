@@ -2,7 +2,9 @@ package devrep.project.controller;
 
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.Optional;
+import java.util.Date;
+import java.text.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,10 +57,8 @@ public class ConfController {
 	void addUser(@RequestBody Conf conf) {
 		confRepository.save(conf);
 	}
-<<<<<<< HEAD
-	
 	@GetMapping("/api/conf/types/{id}")
-	public String[] getTypes(@PathVariable long id) throws ParseException{
+	public String getTypes(@PathVariable long id) throws ParseException{
 		Optional<Conf> f = this.confRepository.findById(id);
 		if(f.isPresent()) {
 			Conf cf = f.get();
@@ -77,7 +77,5 @@ public class ConfController {
 		}
 		
 	}
-=======
->>>>>>> 87cab0c4743cfdc8d67a697da8de7ffdf7c53a9e
 
 }

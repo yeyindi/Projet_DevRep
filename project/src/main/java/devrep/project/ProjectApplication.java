@@ -26,14 +26,14 @@ public class ProjectApplication {
 	@Bean
     CommandLineRunner init(UserRepository userRepository,ConfRepository confRepository) {
         return args -> {
-<<<<<<< HEAD
-        	Conf conf = new Conf("Spring conf",new String[]{"vip: 100€","normal: 10€"},"1/2/2020",new String[]{"vip: 200€","normal: 100€"},
+        /*	Conf conf = new Conf("Spring conf",new String[]{"vip: 100€","normal: 10€"},"1/2/2020",new String[]{"vip: 200€","normal: 100€"},
         			"3/3/2020","test") ;
         	Conf conf2 = new Conf("Spring conf2",new String[]{"vip: 30€","normal: 20€"},"1/2/2020",new String[]{"vip: 200€","normal: 100€"},"3/3/2020","test");
-=======
-        	Conf conf = new Conf("Spring","10","20", null, null, null);
-        	Conf conf2 = new Conf("Angular","100","200", null, null, null);
->>>>>>> 87cab0c4743cfdc8d67a697da8de7ffdf7c53a9e
+        	*/
+        	Conf conf = new Conf("Spring conf","normal: 10€","1/2/2020","normal: 100€",
+        			"3/3/2020","test") ;
+        	Conf conf2 = new Conf("Spring conf","normal: 10€","1/2/2020","normal: 100€",
+        			"3/3/2020","test") ;
         	confRepository.save(conf);
         	confRepository.save(conf2);
         	
