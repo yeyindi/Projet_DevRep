@@ -12,6 +12,7 @@ import devrep.project.interfaces.ConfRepository;
 import devrep.project.interfaces.UserRepository;
 import devrep.project.model.Conf;
 import devrep.project.model.User;
+import devrep.project.util.LoggerUtils;
 import devrep.project.util.PdfUtils;
 import devrep.project.util.SendMailUtils;
 import devrep.project.util.TimerUtils;
@@ -29,10 +30,15 @@ public class ProjectApplication {
         return args -> {
         	Conf conf = new Conf("Spring conf",new String[] {"normal: 100","vip: 200"},"1-2-2020",new String[]{"vip: 200â‚¬","normal: 100â‚¬"},
         			"3-3-2020","test") ;
-        	Conf conf2 = new Conf("Spring conf2",new String[]{"vip: 30â‚¬","normal: 20â‚¬"},"1-2-2020",new String[]{"vip: 200â‚¬","normal: 100â‚¬"},"3-3-2020","test");
-        	
+        	Conf conf2 = new Conf("Spring conf2",new String[]{"vip: 30¢ã","normal: 20¢ã"},"1-2-2020",new String[]{"vip: 200¢ã","normal: 100¢ã"},"3-3-2020","test");
         	confRepository.save(conf);
         	confRepository.save(conf2);
+        	
+        	/* test for logger */
+        	
+        	LoggerUtils logger = new LoggerUtils();
+        	logger.LogSuccess("success");
+        	logger.LogFail("Fail");
         	
         	/* test for mail sending with attachement */
         	/*PdfUtils p  = new PdfUtils();
@@ -44,7 +50,7 @@ public class ProjectApplication {
         	mail.attachedSend("devrepsar@gmail.com", "paiement confirmed", text2, f.getAbsolutePath());*/
         	
         	
-        	/* initialisation de la base de donnÃ©e*/
+        	/* initialisation de la base de donn¨¦e*/
         	String n = " test ";
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
                 User user = new User("Sopena", name , name, name, name, name, name, name, name.toLowerCase() + "@domain.com", name, name);

@@ -14,16 +14,18 @@ public class TimerUtils {
 	
 	private Map<Long,Timer> timerPool = new HashMap<Long,Timer>();
 	private final SendMailUtils MailSender;
+	private final LoggerUtils Logger;
 	
 	public TimerUtils(){
 		MailSender = new SendMailUtils();
     	MailSender.setInitData("devrepsar@gmail.com", "123456789@a");
+    	Logger = new LoggerUtils();
 	}
 	
 	/*Ajouter un timer pour le paiement
-	 * TODO : √† annuler le timer quand le paiement est effectuer avant mais je ne sais pas ou
+	 * TODO : ®§ annuler le timer quand le paiement est effectuer avant mais je ne sais pas ou
 	 * userid : id de l'user
-	 * delay : le delay du paiement en milisecond , √† cherche si ya pas une m√©thode genre Day.getMilisecond()?
+	 * delay : le delay du paiement en milisecond , ®§ cherche si ya pas une m®¶thode genre Day.getMilisecond()?
 	 */
 	public void addTimer(long userid,long delay) {
 		TimerTask task = new TimerTask() {
@@ -40,7 +42,8 @@ public class TimerUtils {
 	            String text = u.getfName()+" "+u.getlName()+" you do not paid in time, please retry for demand"; 
 	        	MailSender.simpleMailSend("devrepsar@gmail.com", "Paid link expired", text);
 	        	timerPool.remove(userid);
-	        	System.out.println("Pool size "+timerPool.size());
+	        	String fail = u.getfName()+" "+u.getlName()+" do not paid in time";
+	        	Logger.LogFail(fail);
 	        }
 	    };
 	    Timer timer = new Timer("Timer_"+userid);
