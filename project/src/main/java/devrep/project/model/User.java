@@ -22,6 +22,7 @@ public class User {
     private final String email;
     private final String phone;
     private final String type;
+    private boolean confirmed;
     private String conf_id;
     
     public User(String title, String fName, String lName, String institution, String addr, String zip,
@@ -38,6 +39,7 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.type = type;
+		this.confirmed = false;
 	}
     
     public User() {
@@ -53,6 +55,7 @@ public class User {
 		this.email = "";
 		this.phone = "";
 		this.type = "";
+		this.confirmed = false;
     }
 
 	public long getId() {
@@ -105,6 +108,13 @@ public class User {
 
 	public String getType() {
 		return type;
+	}
+	
+	public boolean getConfirmed() {
+		return this.confirmed;
+	}
+	public void setConfirmed() {
+		this.confirmed = true;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
-<h4>Recent updates</h4>
-<div class="media text-muted pt-3 border-bottom border-gray" *ngFor="let model of models">
-  <p class="media-body pb-3 mb-0 small lh-125 offset-sm-1">
+<div class="confs">
+<h5 class=" mt-3">Recent updates</h5>
+<div class="  media text-muted pt-3 center border border-gray" *ngFor="let model of models">
+  <p class="media-body pb-3 mb-0 small lh-125 ml-3">
     <a  routerLink="/inscription/{{ model.id}}" class="d-block text-gray-dark">{{ model.title }}</a>
     Early date: {{ model.early_date }} <br>
     Late date: {{ model.late_date }}
@@ -10,4 +11,5 @@
   <div class="col-12">
     <button  routerLink="/login" type="button" class="btn btn-primary mt-3 text-center">Add</button>
   </div>
+</div>
 </div>

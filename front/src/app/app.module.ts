@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
+import { PayComponent } from './pay/pay.component';
 
 const appRoutes:Routes = [
   {
@@ -25,6 +26,10 @@ const appRoutes:Routes = [
   {
     path:"register",
     component:RegisterComponent
+  },
+  {
+    path:"inscription/pay/:conf/:user",
+    component: PayComponent
   }
 ];
 
@@ -34,7 +39,8 @@ const appRoutes:Routes = [
     InscriptionComponent,
     LoginComponent,
     MainComponent,
-    RegisterComponent
+    RegisterComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

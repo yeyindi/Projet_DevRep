@@ -30,7 +30,7 @@ export class InscriptionComponent implements OnInit {
     this.http.get<string[]>(url).subscribe(
       res => {
         //some codes
-        if(res.length > 0){
+        if(res != null){
             this.types = res;
             this.exist = true;
         }
@@ -39,6 +39,7 @@ export class InscriptionComponent implements OnInit {
       },
       err => {
         alert("An error has occured, can not collect prices from server");
+        console.log(err);
       }
     );
   }
@@ -56,7 +57,7 @@ export class InscriptionComponent implements OnInit {
     this.http.post(url,this.model).subscribe(
       res => {
         //some codes
-        alert("it works");
+        alert("Your will received a email when admin validate your inscription");
 
       },
       err => {

@@ -48,5 +48,15 @@ public class RegisterController {
 	  void deleteRegister(@PathVariable Long id) {
 		registerRepository.deleteById(id);
 	}
-
+	@PostMapping("/api/login")
+	public Boolean login(@RequestBody Register register) {
+		List<Register> l = (List<Register>)registerRepository.findAll();
+		for(Register r:l) {
+			if(r.getEmail().contentEquals(register.getEmail()) && r.getPassword().contentEquals(register.getPassword())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

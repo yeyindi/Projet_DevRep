@@ -71,15 +71,18 @@
 </div>
 <div class="form-group">
   <label for="email">Email</label>
-  <input type="text" class="form-control col-lg-9" id="email" name="email"
+  <input type="email" class="form-control col-lg-9" id="email" name="email"
   [(ngModel)]="model.email"
   #email="ngModel"
+  ngModel email="true"
   [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
 </div>
 <div class="form-group">
   <label for="phone">Phone</label>
-  <input type="text" class="form-control col-lg-9" id="phone" name="phone"
+  <input type="tel" class="form-control col-lg-9" id="phone" name="phone"
   [(ngModel)]="model.phone"
+  pattern="06[0-9]{8}"
+  placeholder="06xxxxxxxx"
   #phone="ngModel"
   [ngClass]="{'is-invalid':f.submitted && phone.invalid}"required/>
 </div>

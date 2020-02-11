@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
     title:"",
     early:"",
     late:"",
-    earlyPrices:Array<[string,number]>(),
-    latePrices:Array<[string,number]>(),
+    earlyPrice:"",
+    latePrice:"",
 
   };
-  isLoggedIn = true;
+  isLoggedIn = false;
   indexEarly = 0;
   indexLate = 0;
   constructor(private http:HttpClient) { }
@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
     //send request
     let url = "http://localhost:8080/api/login";
     this.modelLogin["confirm"] = this.modelLogin["password"];
-    this.http.post(url,this.modelLogin).subscribe(
+    this.http.post<boolean>(url,this.modelLogin).subscribe(
       res => {
         //some codes
         console.log(res);
-        if(res == null ){
+        if(res == false ){
           alert("wrong email or password");
         }
         else{
@@ -84,6 +84,6 @@ export interface ConfModelView{
   title:string;
   early:string;
   late:string;
-  earlyPrices:Array<[string,number]>;
-  latePrices:Array<[string,number]>;
+  earlyPrice:string;
+  latePrice:string;
 }

@@ -58,19 +58,28 @@ public class ConfController {
 		confRepository.save(conf);
 	}
 	@GetMapping("/api/conf/types/{id}")
-	public String getTypes(@PathVariable long id) throws ParseException{
+	public String[] getTypes(@PathVariable long id){
 		Optional<Conf> f = this.confRepository.findById(id);
+
 		if(f.isPresent()) {
 			Conf cf = f.get();
-			SimpleDateFormat  format = new SimpleDateFormat("mm/dd/yyyy");
-			Date d1 = format.parse(cf.getEarly_date());
-			Date d2 = new Date();
-			if(d2.after(d1)) {
-				return cf.getLate_price();
+			SimpleDateFormat  format = new SimpleDateFormat("yyyy-mm-dd");
+			Date d1;
+			try {
+				d1 = format.parse(cf.getEarly_date());
+				Date d2 = new Date();
+				if(d2.after(d1)) {
+					return cf.getLate_price();
+				}
+				else {
+					return cf.getEarly_price();
+				}
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
 			}
-			else {
-				return cf.getEarly_price();
-			}
+
 		}
 		else {
 			return null;

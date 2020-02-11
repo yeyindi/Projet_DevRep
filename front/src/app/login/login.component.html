@@ -1,10 +1,11 @@
-<form *ngIf="!isLoggedIn" class="col-lg-5 offset-lg-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
+<form *ngIf="!isLoggedIn" class="col-lg-5 offset-lg-4 mt-4" #f="ngForm" (ngSubmit)="f.form.valid && sendForm()"  novalidate>
 <div class="form-group">
   <label for="email">Email</label>
   <input type="email" class="form-control col-lg-9" id="email"
   name="email"
   [(ngModel)]="modelLogin.email"
   #email="ngModel"
+  ngModel email="true"
   [ngClass]="{'is-invalid':f.submitted && email.invalid}"required/>
 </div>
 <div class="form-group">
@@ -46,13 +47,13 @@
     <label class="control-label" for="early">Prices</label>
     <div class="controls">
         <div class="input-group cpl-xs-3">
-          <input class="form-control col-lg-7" name="pricesE" type="text"
-          [(ngModel)] ="modelConf.prices"
-          #pricesE="ngModel"
-          [ngClass]="{'is-invalid':f.submitted && pricesE.invalid}" required
+          <input class="form-control col-lg-7" name="priceE" type="text"
+          [(ngModel)] ="modelConf.earlyPrice"
+          #priceE="ngModel"
+          [ngClass]="{'is-invalid':f.submitted && priceE.invalid}" required
           />
           <div class="input-group-append">
-            <button type="button" class="btn btn-outline-secondary">+</button>
+            <button type="button" class="btn btn-outline-secondary">€</button>
           </div>
         </div>
     </div>
@@ -66,5 +67,20 @@
       [ngClass]="{'is-invalid':f.submitted && late.invalid}" required
       />
     </div>
-<button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3" type="submit">Submit </button>
+    <div class="control-group" id="Lprices">
+      <label class="control-label" for="late">Prices</label>
+      <div class="controls">
+          <div class="input-group">
+            <input class="form-control col-lg-7" name="priceL" type="text"
+            [(ngModel)] ="modelConf.latePrice"
+            #priceE="ngModel"
+            [ngClass]="{'is-invalid':f.submitted && priceL.invalid}" required
+            />
+            <div class="input-group-append">
+              <button type="button" class="btn btn-outline-secondary">€</button>
+            </div>
+          </div>
+      </div>
+    </div>
+<button type="submit"  class="btn btn-primary col-lg-2 offset-lg-3 " type="submit">Submit </button>
 </form>
