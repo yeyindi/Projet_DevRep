@@ -54,6 +54,7 @@ export class InscriptionComponent implements OnInit {
     //send request
     let url = "http://localhost:8080/api/users";
     this.model["conf_id"] = this.route.snapshot.params["id"];
+    console.log(this.model);
     this.http.post(url,this.model).subscribe(
       res => {
         //some codes

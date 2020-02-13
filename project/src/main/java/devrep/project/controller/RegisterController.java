@@ -66,8 +66,13 @@ public class RegisterController {
 	
 	@DeleteMapping("/api/register/{id}")
 	  public void  deleteRegister(@PathVariable Long id) {
+		Optional<Register> p = registerRepository.findById(id);
+		if(p.isPresent()) {
+			Register u = p.get();
+			MailSender.simpleMailSend(u.getEmail()/*"devrepsar@gmail.com"*/, 
+					"Confirmation", "Your inscription is canceled by the Super Administrator");
+		}
 		registerRepository.deleteById(id);
-		MailSender.simpleMailSend(/*u.getEmail()*/"devrepsar@gmail.com", "Confirmation", "Your inscription is cancelled by the Super Administrator");
 	}
 	@GetMapping("/api/register/add/{id}")
 	  public boolean  addRegister(@PathVariable Long id) {
@@ -76,7 +81,7 @@ public class RegisterController {
 			Register r = p.get();
 			r.setConfirmed();
 			registerRepository.save(r);
-    		MailSender.simpleMailSend(/*r.getEmail()*/"devrepsar@gmail.com", "Confirmation", "Your inscription is saved, you can log in now");
+    		MailSender.simpleMailSend(r.getEmail()/*"devrepsar@gmail.com"*/, "Confirmation", "Your inscription is saved, you can log in now");
 			return true;
 		}
 		else {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute,Router} from '@angular/router';
 
 @Component({
   selector: 'app-pay',
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PayComponent implements OnInit {
 
-  constructor(private http:HttpClient,private route:ActivatedRoute) { }
+  constructor(private http:HttpClient,private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
   }
@@ -22,9 +22,12 @@ export class PayComponent implements OnInit {
         console.log(res);
           this.http.post(url, res).subscribe(
             res => {
+              alert("Sucessfull");
+              this.router.navigate([""]);
               console.log(res);
             },
             err => {
+              alert("Can not validate the payement, check the error in your console");
               console.log(err);
             }
           );

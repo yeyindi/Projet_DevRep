@@ -140,7 +140,6 @@
 <button type="submit"  oncick="addPrice()" class="btn btn-primary col-lg-2 mt-3 offset-lg-3 " type="submit">Submit </button>
 </form>
 
-
 <div *ngIf="superAdmin">
   <div class="confs">
   <h5 class=" mt-3">Recent admin request</h5>
@@ -153,6 +152,27 @@
       <div class="col-12 offset-rg-3">
         <button (click)=accept(req)  type="button" class="btn btn-primary mt-3 bg-green ">Accept</button>
         <button  (click)=deleteReq(req) type="button" class="btn btn-primary mt-3  bg-red">Refuse</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="superAdmin">
+  <div class="confs">
+  <h5 class=" mt-3">Conferences</h5>
+  <div class="  media text-muted pt-3 center border border-gray" *ngFor="let conf of confs">
+    <p class="media-body pb-3 mb-0 small lh-125 ml-3">
+      <a  routerLink="" class="d-block text-gray-dark"></a>
+       {{conf.title}}<br/>
+       {{conf.early_date}}<br/>
+       {{conf.late_date}}
+    </p>
+    <div class="form-row text-center">
+      <div class="col-12 offset-rg-3">
+        <button  (click)=deleteConf(conf) type="button" class="btn btn-primary mt-3  bg-red">Remove</button>
       </div>
     </div>
   </div>

@@ -10,3 +10,11 @@
 00:40:46.608 [main] INFO  rollingFileLogger - test
 00:41:23.386 [main] INFO  rollingFileLogger - test
 00:54:25.797 [main] INFO  rollingFileLogger - test
+11:23:59.085 [main] INFO  rollingFileLogger - test
+11:28:45.578 [main] INFO  rollingFileLogger - test
+18:52:59.985 [main] INFO  rollingFileLogger - test
+19:08:58.195 [main] INFO  rollingFileLogger - test
+19:13:14.129 [main] INFO  rollingFileLogger - test
+19:16:43.558 [main] INFO  rollingFileLogger - test
+19:25:43.221 [main] INFO  rollingFileLogger - test
+19:26:03.976 [main] INFO  rollingFileLogger - test

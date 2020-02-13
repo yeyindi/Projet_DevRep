@@ -55,11 +55,11 @@ public class ProjectApplication {
         	/* initialisation de la base de donnée*/
         	String n = " test ";
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-                User user = new User("Sopena", name , name, name, name, name, name, name, name.toLowerCase() + "@domain.com", name, name);
+                User user = new User("Sopena", name , name, name, name, name, name, name, name.toLowerCase() + "@domain.com", name, name,""+conf.getId());
                 user.setConf(""+conf.getId());
                 userRepository.save(user);
             });
-            User user = new User("Sopena", n , n, n, n, n, n, n, n.toLowerCase() + "@domain.com", n, n);
+            User user = new User("Sopena", n , n, n, n, n, n, n, n.toLowerCase() + "@domain.com", n, n,""+conf2.getId());
             user.setConf(""+conf2.getId());
             userRepository.save(user);
             

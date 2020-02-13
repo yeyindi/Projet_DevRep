@@ -26,8 +26,8 @@ public class User {
     private String conf_id;
     
     public User(String title, String fName, String lName, String institution, String addr, String zip,
-			String city, String country, String email, String phone, String type) {
-		this.conf_id = "";
+			String city, String country, String email, String phone, String type, String conf_id) {
+		this.conf_id = conf_id;
 		this.title = title;
 		this.fName = fName;
 		this.lName = lName;

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Date;
 import java.text.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,12 @@ public class ConfController {
 	@GetMapping("/api/conf")
 	public List<Conf> getConfs() {
 		return (List<Conf>) confRepository.findAll();
+	}
+	
+	@DeleteMapping("/api/conf/{id}")
+	public void deleteConf(@PathVariable Long id) {
+		this.confRepository.deleteById(id);
+		
 	}
 	
 	/*ca ne marche pas , j'essayer de recuperer les titre de conf via un param donne en url

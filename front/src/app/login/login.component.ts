@@ -14,8 +14,9 @@ export class LoginComponent implements OnInit {
   modelLogin:registerModelView = {
     email:"",
     password:"",
-    confirm:""
+    confirm:"",
     confirmed:false,
+    id:"",
   };
   modelConf:ConfModelView={
     title:"",
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     early_prices:"",
     late_prices:"",
     registraton_type:"",
+    id:"",
   };
   reqs:registerModelView[];
   showForm:boolean = false;
@@ -54,6 +56,7 @@ export class LoginComponent implements OnInit {
     name :"",
     price :"",
   };
+  confs: ConfModelView[];
   constructor(private http:HttpClient,private _sharedService: RegisterToAppService) {
 
     this._sharedService.changeEmitted$.subscribe(
@@ -103,7 +106,16 @@ export class LoginComponent implements OnInit {
               err =>{
                 console.log(err);
               }
-            )
+            );
+            this.http.get<ConfModelView[]>("http://localhost:8080/api/conf").subscribe(
+              res => {
+                this.confs = res;
+              },
+              err => {
+                alert("can not receive conferences from serveur, check error in the console");
+                console.log(err);
+              }
+            );
         }
         else{
           alert("Waiting validation for Super Administrator");
@@ -118,7 +130,7 @@ export class LoginComponent implements OnInit {
   public deleteReq(r:registerModelView){
     this.http.delete("http://localhost:8080/api/register/"+r.id).subscribe(
       res => {
-        alert("Successfull")
+        alert("Sucessfull")
       },
       err => {
         alert(err);
@@ -126,6 +138,19 @@ export class LoginComponent implements OnInit {
     );
     this.reqs= this.reqs.filter(req => req != r);
   }
+  public deleteConf(conf:ConfModelView){
+      this.http.delete("http://localhost:8080/api/conf/"+conf.id).subscribe(
+        res => {
+          alert("Successfull");
+          this.confs = this.confs.filter(c => c != conf);
+        },
+        err => {
+          alert("Can not delete the conf, check the error in the console");
+          console.log(err);
+        }
+      );
+  }
+
   public accept(r:registerModelView){
     this.http.get<boolean>("http://localhost:8080/api/register/add/"+r.id).subscribe(
       res =>{
@@ -183,6 +208,7 @@ export interface ConfModelView{
   early_prices:string;
   late_prices:string;
   registraton_type:string;
+  id:string;
 }
 
 export interface priceModel{

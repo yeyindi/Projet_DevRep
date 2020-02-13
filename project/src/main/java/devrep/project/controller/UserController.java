@@ -48,7 +48,7 @@ public class UserController {
     @PostMapping("/api/users")
     public void addUser(@RequestBody User user) {
         userRepository.save(user);
-
+        userRepository.findAll().forEach(System.out::println);
     	String text = user.getfName()+" "+user.getlName()+" want to inscribe to conference "+user.getConf()
     			+ " click on this to validate http://localhost:8080/api/users/confirm/"+user.getId(); 
     	MailSender.simpleMailSend("devrepsar@gmail.com", "test", text);
@@ -65,8 +65,8 @@ public class UserController {
     		User u = (User)p.get();
     		u.setConfirmed();
     		userRepository.save(u);
-    		MailSender.simpleMailSend(/*u.getEmail()*/"devrepsar@gmail.com", "Confirmation", "Your inscription is saved, you have to pay, click "
-    				+ "this to pay  http://localhost:4200/inscription/pay/"+u.getConf()+"/"+u.getId());
+    		MailSender.simpleMailSend(u.getEmail()/*"devrepsar@gmail.com"*/, "Confirmation", "Your inscription is saved, you have to pay, click "
+    				+ "this to pay  http://localhost:4200/inscription/pay/"+u.getfName()+"/"+u.getId());
     		return true;
     	}
     	else {
