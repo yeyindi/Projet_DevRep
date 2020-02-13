@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import devrep.project.exception.ConfNotFoundException;
 import devrep.project.interfaces.ConfRepository;
 import devrep.project.model.Conf;
+
+import org.json.JSONObject;
 import org.springframework.data.util.Pair;
 
 @RestController
@@ -57,11 +59,11 @@ public class ConfController {
 	@PostMapping("/api/conf")
 	void addUser(@RequestBody Conf conf) {
 		System.out.println(conf.getEarly_date()+"\n"+
-				conf.getEarly_price()[0]+"\n"+conf.getLate_date()+"\n"+conf.getLate_price()[0]+"\n"+conf.getTitle());
+				conf.getEarly_price()+"\n"+conf.getLate_date()+"\n"+conf.getLate_price()+"\n"+conf.getTitle());
 		confRepository.save(conf);
 	}
 	@GetMapping("/api/conf/types/{id}")
-	public String[] getTypes(@PathVariable long id){
+	public String getTypes(@PathVariable long id){
 		Optional<Conf> f = this.confRepository.findById(id);
 
 		if(f.isPresent()) {
@@ -72,10 +74,10 @@ public class ConfController {
 				d1 = format.parse(cf.getEarly_date());
 				Date d2 = new Date();
 				if(d2.after(d1)) {
-					return cf.getLate_price();
+					return JSONObject.quote(cf.getLate_price());
 				}
 				else {
-					return cf.getEarly_price();
+					return JSONObject.quote(cf.getEarly_price());
 				}
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

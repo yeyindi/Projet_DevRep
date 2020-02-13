@@ -1,0 +1,21 @@
+13:42:04.281 [main] INFO  rollingFileLogger - test
+13:42:04.282 [main] INFO  rollingFileLogger - SUCCESS : success
+13:42:04.282 [main] WARN  rollingFileLogger - FAIL : Fail
+14:53:11.098 [main] INFO  rollingFileLogger - test
+15:59:22.046 [main] INFO  rollingFileLogger - test
+16:32:55.820 [main] INFO  rollingFileLogger - test
+16:57:55.983 [main] INFO  rollingFileLogger - test
+17:05:15.882 [main] INFO  rollingFileLogger - test
+17:06:50.893 [main] INFO  rollingFileLogger - test
+17:07:30.006 [main] INFO  rollingFileLogger - test
+17:12:10.292 [main] INFO  rollingFileLogger - test
+19:31:49.023 [main] INFO  rollingFileLogger - test
+19:43:07.018 [main] INFO  rollingFileLogger - test
+22:14:21.747 [main] INFO  rollingFileLogger - test
+22:16:04.874 [main] INFO  rollingFileLogger - test
+23:03:43.051 [main] INFO  rollingFileLogger - test
+23:10:01.466 [main] INFO  rollingFileLogger - test
+23:37:48.567 [main] INFO  rollingFileLogger - test
+23:45:25.901 [main] INFO  rollingFileLogger - test
+23:52:46.046 [main] INFO  rollingFileLogger - test
+23:58:04.655 [main] INFO  rollingFileLogger - test

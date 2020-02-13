@@ -1,5 +1,12 @@
-<nav class="navbar navbar-light bg-dark">
-  <a class="navbar-brand text-white" href="/">Home</a>
+
+<nav class="navbar navbar-expand-md navbar-light bg-dark">
+        <div class="collapse navbar-collapse mx-auto w-auto justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active text-white " href="/">Home</a>
+                <button *ngIf="isAdmin" class="nav-item bg-dark  text-white"(click)=admin()>Manage Conferences</button>
+                <button *ngIf="isSuperAdmin" class="navbar-brand mx-2 bg-dark d-none d-md-inline text-white" (click)=superAdmin()>Manage Admins</button>
+            </div>
+        </div>
 </nav>
 <!--The content below is only a placeholder and can be replaced.-->
   <router-outlet></router-outlet>

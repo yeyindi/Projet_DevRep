@@ -15,18 +15,25 @@ public class Register {
 	private String password;
 	private String confirm;
 	private String super_admin;
+	private boolean confirmed;
 	
 	public Register(String email, String password, String confirm,String super_admin) {
 		this.email = email;
 		this.password = password;
 		this.confirm = confirm;
 		this.super_admin = super_admin;
+		this.confirmed = false;
+	}
+	
+	public void setConfirmed() {
+		this.confirmed = true;
 	}
 	
 	public Register() {
 		this.email = "";
 		this.password = "";
 		this.confirm = "";
+		this.confirmed = false;
 	}
 
 	public long getId() {
@@ -63,6 +70,9 @@ public class Register {
 
 	public String getSuper_admin() {
 		return super_admin;
+	}
+	public boolean isConfirmed() {
+		return this.confirmed;
 	}
 
 	public void setSuper_admin(String super_admin) {

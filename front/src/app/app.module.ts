@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { PayComponent } from './pay/pay.component';
+import{RegisterToAppService} from './register-to-app.service';
 
 const appRoutes:Routes = [
   {
@@ -48,7 +49,7 @@ const appRoutes:Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [RegisterToAppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

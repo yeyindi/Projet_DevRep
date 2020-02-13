@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router'
 
@@ -27,8 +27,13 @@ export class RegisterComponent implements OnInit {
     let url = "http://localhost:8080/api/register";
     this.http.post(url,this.model).subscribe(
       res => {
-        console.log("succes");
-        this.router.navigate(["login"]);
+        if(res != true){
+          alert("Email already exist, enter a new email")
+        }
+        else{
+          alert("Sucessfull, waiting Super administrator validate your inscription, check your email");
+            this.router.navigate(["login"]);
+        }
     },
       err => {
         alert("error, can not create a new account, try later");

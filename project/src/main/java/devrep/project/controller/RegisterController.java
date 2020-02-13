@@ -1,7 +1,9 @@
 package devrep.project.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import devrep.project.exception.RegistrationNotFoundException;
 import devrep.project.interfaces.RegisterRepository;
 import devrep.project.model.Register;
+import devrep.project.util.SendMailUtils;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RegisterController {
 
 	private final RegisterRepository registerRepository;
+    private final SendMailUtils MailSender;
+
 
 	public RegisterController(RegisterRepository registerRepository) {
 		this.registerRepository = registerRepository;
+    	MailSender = new SendMailUtils();
+    	MailSender.setInitData("devrepsar@gmail.com", "123456789@a");
 	}
 
 	
@@ -40,23 +47,63 @@ public class RegisterController {
 	
 	/* ajouter un register */
 	@PostMapping("/api/register")
-	public void addRegister(@RequestBody Register register) {
-		registerRepository.save(register);
+	public boolean addRegister(@RequestBody Register register) {
+		List<Register> l = (List<Register>)registerRepository.findAll();
+		boolean exist = false;
+		for(Register r:l) {
+			if(register.getEmail().contentEquals(r.getEmail())) {
+				exist = true;
+			}
+		}
+		if(exist) {
+			return false;
+		}
+		else {
+			registerRepository.save(register);
+			return true;
+		}
 	}
 	
 	@DeleteMapping("/api/register/{id}")
-	  void deleteRegister(@PathVariable Long id) {
+	  public void  deleteRegister(@PathVariable Long id) {
 		registerRepository.deleteById(id);
+		MailSender.simpleMailSend(/*u.getEmail()*/"devrepsar@gmail.com", "Confirmation", "Your inscription is cancelled by the Super Administrator");
 	}
+	@GetMapping("/api/register/add/{id}")
+	  public boolean  addRegister(@PathVariable Long id) {
+		Optional<Register> p =registerRepository.findById(id);
+		if(p.isPresent()) {
+			Register r = p.get();
+			r.setConfirmed();
+			registerRepository.save(r);
+    		MailSender.simpleMailSend(/*r.getEmail()*/"devrepsar@gmail.com", "Confirmation", "Your inscription is saved, you can log in now");
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
 	@PostMapping("/api/login")
-	public Boolean login(@RequestBody Register register) {
+	public String login(@RequestBody Register register) {
 		List<Register> l = (List<Register>)registerRepository.findAll();
 		for(Register r:l) {
+			if(register.getEmail().contentEquals("admin@gmail.com") && register.getPassword().contentEquals("admin")) {
+				return JSONObject.quote("SuperAdmin");
+				
+			}
 			if(r.getEmail().contentEquals(register.getEmail()) && r.getPassword().contentEquals(register.getPassword())) {
-				return true;
+				System.out.println("in if: "+r.isConfirmed());
+				if(r.isConfirmed() == true) {
+					return JSONObject.quote("Admin");
+				}
+				else {
+					return JSONObject.quote("AdminInvalid");
+				}
 			}
 		}
-		return false;
+		return JSONObject.quote("Unkown");
 	}
 	
 }
